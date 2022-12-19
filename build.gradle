@@ -11,7 +11,7 @@ plugins {
 }
 
 allOpen {
-    annotation('com.choimory.config.allopen.AllOpen')
+    annotation('com.choimory.kotlininaction.common.annotation.AllOpen')
 }
 
 group = 'com.choimory'
