@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.asciidoctor.convert") version "1.5.8"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.6.21"
+    id("org.jlleitschuh.gradle.ktlint") version "9.1.0"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
@@ -29,7 +30,7 @@ repositories {
     mavenCentral()
 }
 
-extra["snippetsDir"] = file("build/generated-snippets")
+val snippetsDir by extra { file("build/generated-snippets") }
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -39,6 +40,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
     compileOnly("org.projectlombok:lombok")
     //developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
@@ -56,7 +58,6 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-/*
 tasks.withType<Test> {
     useJUnitPlatform()
 }
@@ -65,8 +66,7 @@ tasks.test {
     outputs.dir(snippetsDir)
 }
 
-tasks.asciidoctor {
+/*tasks.asciidoctor {
     inputs.dir(snippetsDir)
     dependsOn(test)
-}
-*/
+}*/
