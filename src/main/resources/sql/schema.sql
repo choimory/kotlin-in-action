@@ -21,7 +21,7 @@ create or replace table board
     title       varchar(1000)                        not null,
     content     longtext                             null,
     created_at  datetime default current_timestamp() not null,
-    modified_at datetime                             null,
+    updated_at  datetime                             null,
     deleted_at  datetime                             null,
     constraint board_member_id_fk
         foreign key (member_id) references member (id)
