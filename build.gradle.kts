@@ -12,7 +12,13 @@ plugins {
 }
 
 allOpen {
+    //final이 되어선 안되는 특정 클래스에 활용하기 위한 커스텀 어노테이션
     annotation("com.choimory.kotlininaction.common.annotation.AllOpen")
+
+    //Hibernate의 Entity class 및 instance field는 final이 되어선 안된다 - 공식문서
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
 
 
