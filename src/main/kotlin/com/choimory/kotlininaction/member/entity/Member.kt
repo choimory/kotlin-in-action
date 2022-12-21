@@ -10,10 +10,10 @@ import javax.persistence.Id
 class Member (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id:Int? = null,
-    private var email:String? = null,
-    private var password:String? = null,
-    private var name:String? = null
+    var id:Long? = null,
+    var email:String? = null,
+    var password:String? = null,
+    var name:String? = null
 ) : DatetimeAt() {
 
 }

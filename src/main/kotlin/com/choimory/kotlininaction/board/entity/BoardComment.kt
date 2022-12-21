@@ -8,25 +8,25 @@ import javax.persistence.*
 class BoardComment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id:Int? = null,
+    var id:Long? = null,
 
     @ManyToOne
     @JoinColumn(name = "board_id")
-    private var board:Board? = null,
+    var board:Board? = null,
 
     @ManyToOne
     @JoinColumn(name = "parent_comment_id")
-    private var parent: BoardComment? = null,
+    var parent: BoardComment? = null,
 
     @OneToMany(mappedBy = "parent")
-    private var children: MutableList<BoardComment> = mutableListOf(),
+    var children: MutableList<BoardComment> = mutableListOf(),
 
     @OneToOne
     @JoinColumn(name = "member_id")
-    private var member:Member? = null,
+    var member:Member? = null,
 
-    private var memberName:String? = null,
-    private var content:String? = null,
+    var memberName:String? = null,
+    var content:String? = null,
 ) : DatetimeAt(){
 
 }
