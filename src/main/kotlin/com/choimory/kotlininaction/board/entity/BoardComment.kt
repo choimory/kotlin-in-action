@@ -8,25 +8,38 @@ import javax.persistence.*
 class BoardComment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id:Long? = null,
-
+    val id:Long? = null,
+    board:Board? = null,
+    parent: BoardComment? = null,
+    children: MutableList<BoardComment> = mutableListOf(),
+    member:Member? = null,
+    memberName:String? = null,
+    content:String? = null,
+) : DatetimeAt(){
     @ManyToOne
     @JoinColumn(name = "board_id")
-    var board:Board? = null,
+    var board: Board? = board
+        protected set
 
     @ManyToOne
     @JoinColumn(name = "parent_comment_id")
-    var parent: BoardComment? = null,
+    var parent: BoardComment? = parent
+        protected set
 
     @OneToMany(mappedBy = "parent")
-    var children: MutableList<BoardComment> = mutableListOf(),
+    protected val mutableChildren: MutableList<BoardComment> = children
+    val children: List<BoardComment> get() = mutableChildren.toList()
+    /*var children: MutableList<BoardComment> = children
+        protected set*/
 
     @OneToOne
     @JoinColumn(name = "member_id")
-    var member:Member? = null,
+    var member: Member? = member
+        protected set
 
-    var memberName:String? = null,
-    var content:String? = null,
-) : DatetimeAt(){
+    var memberName: String? = memberName
+        protected set
 
+    var content: String? = content
+        protected set
 }

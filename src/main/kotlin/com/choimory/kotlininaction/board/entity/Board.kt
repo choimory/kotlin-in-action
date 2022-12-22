@@ -5,18 +5,26 @@ import com.choimory.kotlininaction.member.entity.Member
 import javax.persistence.*
 
 @Entity
-data class Board (
+class Board (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id:Long? = null,
-
+    val id:Long? = null,
+    member:Member? = null,
+    memberName:String? = null,
+    title:String? = null,
+    content:String? = null,
+) : DatetimeAt() {
     @ManyToOne
     @JoinColumn(name = "member_id")
-    var member:Member? = null,
+    var member:Member? = member
+        protected set
 
-    var memberName:String? = null,
-    var title:String? = null,
-    var content:String? = null,
-) : DatetimeAt() {
+    var memberName:String? = memberName
+        protected set
 
+    var title:String? = title
+        protected set
+
+    var content:String? = content
+        protected set
 }
