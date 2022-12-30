@@ -4,6 +4,7 @@ import com.choimory.kotlininaction.board.entity.Board
 import com.choimory.kotlininaction.board.repository.BoardRepository
 import com.choimory.kotlininaction.common.data.response.CommonResponse
 import com.choimory.kotlininaction.common.exception.CommonException
+import lombok.extern.slf4j.Slf4j
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
@@ -12,7 +13,7 @@ class BoardService (
     private val boardRepository:BoardRepository
 ) {
     fun find(id:Long):CommonResponse<Board>{
-        val board = boardRepository.findById(id)
+        val board:Board = boardRepository.findById(id)
             .orElseThrow { CommonException(HttpStatus.NOT_FOUND) }
 
         return CommonResponse(

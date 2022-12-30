@@ -8,12 +8,19 @@ import javax.persistence.Id
 
 @Entity
 class Member (
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id:Long? = null,
-    var email:String? = null,
-    var password:String? = null,
-    var name:String? = null
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+    email:String? = null,
+    password:String? = null,
+    name:String? = null
 ) : DatetimeAt() {
 
+    var email:String? = email
+        protected set
+
+    var password:String? = password
+        protected set
+
+    var name:String? = name
+        protected set
 }
